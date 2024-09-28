@@ -1,0 +1,83 @@
+{% extends 'chat/base.html' %}
+
+{% block title %} {{ room.name }} chat {% endblock %}
+
+{% block content %}
+<div class="chat-page">
+    <h1 style="font-size: 20px; margin: 2px;"> {{room.name}} Chat </h1>
+    <div class="chat-container">
+        <div class="chat-box" id="box">
+            {% for message in messages %}
+                {% if message.sender == user %}
+                <div class="message my-message">
+                    <strong>{{message.sender.username}}:</strong>
+                    <p>{{message.content}}</p>
+                    <span class="time">{{message.date_added}}</span>
+                </div>
+                {% else %}
+                <div class="message other-message">
+                    <strong>{{message.sender.username}}:</strong>
+                    <p>{{message.content}}</p>
+                    <span class="time">{{message.date_added}}</span>
+                </div>
+                {% endif %}
+            {% endfor %}
+            <!-- 
+            <div class="message other-message">
+                <strong>John:</strong>
+                <p>Hello, how are you?</p>
+                <span class="time">10:30 AM</span>
+            </div>
+
+            <div class="message my-message">
+                <strong>You:</strong>
+                <p>I'm doing great, thanks! How about you?</p>
+                <span class="time">10:32 AM</span>
+            </div>
+             -->
+        </div>
+
+        <div class="message-input">
+                <input type="text" name="message" placeholder="Type your message..." required id="input-text">
+                <button type="submit" id="submit-btn">Send</button>
+        </div>
+    </div>
+</div>
+
+{{ room.name|json_script:"json-roomname" }} 
+{{ user.username|json_script:"json-user-username" }}
+
+
+<script>
+
+    const chatRoomName = JSON.parse(document.getElementById('json-roomname').textContent);
+    const userName = JSON.parse(document.getElementById('json-user-username').textContent);
+
+    let websocket_url = 'ws://127.0.0.1:8000/ws/chatroom/' + chatRoomName + '/';
+    // instead of local host ip i should use window.location.host if i want to access the app from the phone
+    // so it will change dynamically according to my private ip address
+    let socket = new WebSocket(websocket_url);
+
+    socket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+
+        if (userName === data.username) {
+            document.querySelector('#box').innerHTML += ('<div class="message my-message"><strong>' + data.username + ': </strong>' +'<p>' + data.message + '</p> <span class="time">now</span> </div>');
+        } else {
+            document.querySelector('#box').innerHTML += ('<div class="message other-message"><strong>' + data.username + ': </strong>' +'<p>' + data.message + '</p>  <span class="time">now</span> </div>');
+        }
+    }
+
+    document.querySelector('#submit-btn').onclick = function (e) {
+        const message = document.querySelector('#input-text').value;
+        socket.send(
+            JSON.stringify({
+                'message':message,
+                'username':userName
+            })
+        )
+        document.querySelector('#input-text').value = '';
+    }
+
+</script>
+{% endblock %}

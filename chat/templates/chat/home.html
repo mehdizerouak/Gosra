@@ -1,0 +1,16 @@
+{% extends 'chat/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="main-squares">
+    <div class="squares-container">
+        <a href="{% url 'chat-rooms' %}" class="square">
+            <h2>Public Chat Rooms</h2>
+        </a>
+        <a href="{% url 'users-list' %}" class="square">
+            <h2>Message Users</h2>
+        </a>
+    </div>
+</div>
+{% endblock %}

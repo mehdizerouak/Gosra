@@ -1,0 +1,99 @@
+{% extends 'chat/base.html' %}
+
+{% block title %} {{ room.name }} chat {% endblock %}
+
+{% block content %}
+<div class="chat-page">
+
+    <h1 style="font-size: 20px; margin: 2px;"> Private Chat | {{ recepient_username }} </h1>
+
+    <div class="chat-container">
+
+        <div class="chat-box" id="box">
+            {% for message in messages %}
+                {% if message.sender == user %}
+                <div class="message my-message">
+                    <strong>{{message.sender.username}}:</strong>
+                    <p>{{message.content}}</p>
+                    <span class="time">{{message.date_added}}</span>
+                </div>
+                {% else %}
+                <div class="message other-message">
+                    <strong>{{message.sender.username}}:</strong>
+                    <p>{{message.content}}</p>
+                    <span class="time">{{message.date_added}}</span>
+                </div>
+                {% endif %}
+            {% endfor %}
+            <!-- 
+            <div class="message other-message">
+                <strong>John:</strong>
+                <p>Hello, how are you?</p>
+                <span class="time">10:30 AM</span>
+            </div>
+
+            <div class="message my-message">
+                <strong>You:</strong>
+                <p>I'm doing great, thanks! How about you?</p>
+                <span class="time">10:32 AM</span>
+            </div>
+             -->
+        </div>
+
+        <div class="message-input">
+                <input type="text" name="message" placeholder="Type your message..." required id="input-text">
+                <button type="submit" id="submit-btn">Send</button>
+        </div>
+
+    </div>
+    
+</div>
+
+{{ recepient_username|json_script:"his_username" }}
+{{ user.username|json_script:"my_username" }}
+
+<script>
+
+    const hisUsername = JSON.parse(document.getElementById("his_username").textContent);
+    const myUsername = JSON.parse(document.getElementById("my_username").textContent);
+    // connecting to websocket....
+    let url = 'ws://127.0.0.1:8000/ws/private-chat/' + hisUsername + '/';
+    let webSocket = new WebSocket(url);
+
+    // sending a message from client
+    document.getElementById('submit-btn').onclick = function(e) {
+        const message = document.getElementById('input-text').value;
+
+        let json_message = JSON.stringify({
+            'message': message,
+            'username': myUsername,
+            'receiver_username': hisUsername,
+        });
+
+        webSocket.send(json_message);
+
+        document.getElementById('input-text').value = '';
+    };
+
+    // receiving a message from the other client
+    webSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const message = data.message;
+        const username = data.username;
+
+        const chatBoxDiv = document.getElementById('box');
+        if (username === myUsername) {
+            chatBoxDiv.innerHTML += ('<div class="message my-message"><strong>'+ 
+                username +':</strong><p> '+ message +
+                ' </p><span class="time"> now </span></div>')
+        } else {
+            chatBoxDiv.innerHTML += ('<div class="message other-message"><strong>'+ 
+                username +':</strong><p> '+ message +
+                ' </p><span class="time"> now </span></div>')
+        }
+
+    }
+
+</script>
+
+{% endblock %}

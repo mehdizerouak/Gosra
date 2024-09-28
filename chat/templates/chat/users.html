@@ -1,0 +1,38 @@
+{% extends 'chat/base.html' %}
+
+{% block title %} Users {% endblock %}
+
+{% block content %}
+
+<script>
+    // real time script for filtering (ik it's a bad practice doing it in the frontend)
+    function filterByName(event) {
+      const searchTerm = event.target.value.toLowerCase();  
+      const listItems = document.querySelectorAll(".username");
+  
+      listItems.forEach(function(item) {
+        const itemParentDiv = item.closest("div");  
+        if (item.innerText.toLowerCase().includes(searchTerm)) {
+          itemParentDiv.style.display = '';  
+        } else {
+          itemParentDiv.style.display = 'none';  
+        }
+      });
+    }
+  </script>
+
+<input type="search" oninput="filterByName(event)" placeholder="Search for users....">
+
+<div class="users-grid">
+    {% for user in users %}
+        <div class="user-box">
+            <a href="{% url 'message-user' user.username %}" class="user-link">
+                <span class="username"  >{{ user.username }}</span>
+                <svg class="message-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

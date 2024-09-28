@@ -1,0 +1,28 @@
+{% extends "chat/base.html" %}
+
+{% block title %}Chat Rooms{% endblock %}
+
+{% block content %}
+    <div class="chatrooms-container">
+    
+        <a href="{% url 'create-room' %}">
+        <button class="add-chatroom-btn">Add New Chat Room</button>
+        </a>
+
+        {% if rooms %}
+        
+        {% for room in rooms %}
+        <a href="{% url 'public-chat-room' room.name %}" class="chatroom">
+            <h2 class="chatroom-title"> {{room.name}} </h2>
+            <p class="chatroom-description"> {{room.description}} </p>
+        </a>
+        {% endfor %}
+
+        {% else %}
+
+        <h1>There are no rooms yet! you can create a new room</h1>
+
+        {% endif %}
+
+    </div>
+{% endblock %}

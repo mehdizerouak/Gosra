@@ -1,0 +1,496 @@
+/* i made all the css in one page ik that this is a bad practice */
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #111;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+/* Styling the logout form */
+.logout-form {
+    display: inline;
+}
+
+/* Styling the logout button to look like a link */
+.logout-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.logout-btn:hover {
+    color: #007bff; /* Same hover effect as other links */
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.footer {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: #007bff;
+    border-radius: 5px;
+}
+
+.footer p {
+    font-size: 14px;
+    color: #ddd;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+/* those squares in home */
+
+body {
+    background-color: #f5f5f5;
+}
+
+.main-squares {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px); /* Adjust based on your navbar and footer height */
+}
+
+.squares-container {
+    display: flex;
+    gap: 40px;
+}
+
+.square {
+    width: 220px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.square:nth-child(1) {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+}
+
+.square:nth-child(2) {
+    background: linear-gradient(135deg, #007adf 0%, #00ecbc 100%);
+}
+
+.square:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.square h2 {
+    font-size: 24px;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Add Chat Room button */
+.add-chatroom-btn {
+    margin: 20px 0;
+    padding: 10px 20px;
+    width: 200px;  /* Made button smaller in width */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-chatroom-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Chatroom link styles */
+.chatrooms-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chatroom {
+    text-decoration: none; /* Remove underline from links */
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+}
+
+.chatroom-title {
+    color: #007bff;
+    margin: 0 0 10px;
+}
+
+.chatroom-description {
+    color: #ddd;
+}
+
+/* Scaling effect when hovering */
+.chatroom:hover {
+    transform: scale(1.01); /* Slightly enlarge the room on hover */
+    background-color: #333; /* Optional: darken background slightly */
+}
+
+
+/* Form container for login and register */
+.form-container {
+    max-width: 400px;
+    margin: 40px auto;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h2 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Add Room Form container */
+.add-room-form-container {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    max-width: 500px;
+    margin: 40px auto;  /* Center the form on the page */
+}
+
+/* Form header */
+.add-room-form-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #007bff;
+}
+
+/* Add Room Form group (label and input together) */
+.add-room-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+.add-room-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #ddd;
+}
+
+/* Input and textarea styling */
+.add-room-form .form-group input,
+.add-room-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Placeholder text color */
+.add-room-form .form-group input::placeholder,
+.add-room-form .form-group textarea::placeholder {
+    color: #888;
+}
+
+/* Input and textarea focus effects */
+.add-room-form .form-group input:focus,
+.add-room-form .form-group textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Submit button styling */
+.add-room-form .submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    width: 100%;
+}
+
+.add-room-form .submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* public room messaging page */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #222;
+    border-radius: 10px; /* Slight rounding for a square look */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.chat-box {
+    width: 100%;
+    height: 400px; /* Fixed height */
+    overflow-y: auto; /* Enable scrolling */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    max-width: 70%;
+    word-wrap: break-word;
+    position: relative;
+    font-size: 14px;
+}
+
+.my-message {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+}
+
+.other-message {
+    align-self: flex-start;
+    background-color: #444;
+    color: white;
+}
+
+.message p {
+    margin: 5px 0 0 0;
+}
+
+.time {
+    font-size: 8px;
+    color: #78d2e6c8;
+    position: absolute;
+    bottom: -10px;
+    right: 5px;
+}
+
+.message strong {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.message-input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message-input form {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.message-input input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: white;
+    border-radius: 20px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.message-input button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.message-input button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+.users-online {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 13px;
+    position: relative;
+    z-index: 1;
+}
+
+.online-icon {
+    font-size: 15px;
+    margin-right: 10px;
+    color: #00ff00;
+}
+
+.chat-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 2px;
+}
+
+/* users list */
+
+.user-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.user-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.message-icon {
+    color: #007bff;
+}
+
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.user-box {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

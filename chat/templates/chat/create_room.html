@@ -1,0 +1,23 @@
+{% extends "chat/base.html" %}
+
+{% block title %}Add New Chat Room{% endblock %}
+
+{% block content %}
+    <div class="add-room-form-container">
+        <h2>Add New Chat Room</h2>
+        <form method="POST" action="{% url 'create-room' %}" class="add-room-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Add Chat Room</button>
+        </form>
+    </div>
+{% endblock %}

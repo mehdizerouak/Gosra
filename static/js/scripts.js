@@ -1,0 +1,1 @@
+// i put all the js directely in the html pages idk why i made this file
