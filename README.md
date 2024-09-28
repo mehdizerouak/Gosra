@@ -5,7 +5,8 @@
 ### Prerequisites
 1. **Python**
 2. **Django**
-3. **Redis** installed and running on your local machine (default port: 6379)
+3. **Django-channels**
+4. **Redis** installed and running on your local machine (default port: 6379)
 
 ### After cloning the repo
 
