@@ -7,6 +7,8 @@
 2. **Django**
 3. **Redis** installed and running on your local machine (default port: 6379)
 
+### After cloning the repo
+
 Cd to the folder and install the dependencies 
 ```
   cd Gosra
@@ -24,7 +26,8 @@ Update settings.py and change channel layers conf
   #          "hosts": [("localhost", 6379)],
   #      },
   #  },
-  #}  COMMENT THIS OUT IN settings.py and add the code below this
+  #}
+  # COMMENT THIS OUT IN settings.py and add the code below this 
 
   CHANNEL_LAYERS = {
     'default': {
