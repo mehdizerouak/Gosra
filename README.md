@@ -42,4 +42,4 @@ Then run the server
 ```
   python manage.py runserver
 ```
-it will run on http://http://127.0.0.1:8000/
+it will run on http://127.0.0.1:8000/
